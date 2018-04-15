@@ -29,7 +29,8 @@ class MJPEGClient:
                 line = self._fh.readline()
 
                 if line.startswith("Content-Length: "):
-                    length = int(line.split(" ")[1])
+                    #length = int(line.split(" ")[1])
+                    length = int([ x.strip() for x in line.split(" ", 1)][1])
 
                 # Look for an empty line, signifying the end of the headers.
                 if length is not None and line == "\r\n":
